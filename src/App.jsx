@@ -29,7 +29,7 @@ const App = () => {
           height="850px"
         />
       </div>
-      <h1>refer both</h1>
+      <h1>.....Minimize the screen with help of fingers...</h1>
     </div>
   )
 }
