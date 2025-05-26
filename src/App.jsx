@@ -4,22 +4,24 @@ import cc_record from './cc_record.pdf'
 
 const App = () => {
   return (
-    <div>
-
-<div className="h-screen flex flex-col items-center justify-center">
-  <embed 
-    src={sample2}
-    type="application/pdf"
-    width="800px"
-    height="600px"
-  />
-  <embed 
-    src={cc_record}
-    type="application/pdf"
-    width="800px"
-    height="600px"
-  />
-</div>
+    <div className="min-h-screen bg-red-800">
+      <div className="container mx-auto p-8 flex flex-col items-center justify-center gap-8">
+        <embed 
+          className="border-2 border-red-500 rounded-lg shadow-lg bg-white p-2"
+          src={sample2}
+          type="application/pdf"
+          width="800px"
+          height="650px"
+        />
+        <embed 
+          className="border-2 border-red-500 rounded-lg shadow-lg"
+          src={cc_record}
+          type="application/pdf"
+          width="800px"
+          height="650px"
+        />
+      </div>
+      <h1>refer both</h1>
     </div>
   )
 }
