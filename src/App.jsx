@@ -1,5 +1,6 @@
 import React from 'react'
 import sample2 from './sample2.pdf'
+import cc_record from './cc_record.pdf'
 
 const App = () => {
   return (
@@ -8,6 +9,12 @@ const App = () => {
 <div className="h-screen flex flex-col items-center justify-center">
   <embed 
     src={sample2}
+    type="application/pdf"
+    width="800px"
+    height="600px"
+  />
+  <embed 
+    src={cc_record}
     type="application/pdf"
     width="800px"
     height="600px"
