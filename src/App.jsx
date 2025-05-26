@@ -10,14 +10,14 @@ const App = () => {
           className="border-2 border-red-500 rounded-lg shadow-lg bg-white p-2"
           src={sample2}
           type="application/pdf"
-          width="800px"
+          width="1200px"
           height="650px"
         />
         <embed 
           className="border-2 border-red-500 rounded-lg shadow-lg"
           src={cc_record}
           type="application/pdf"
-          width="800px"
+          width="1200px"
           height="650px"
         />
       </div>
