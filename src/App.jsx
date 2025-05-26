@@ -11,14 +11,14 @@ const App = () => {
           src={sample2}
           type="application/pdf"
           width="1200px"
-          height="650px"
+          height="850px"
         />
         <embed 
           className="border-2 border-red-500 rounded-lg shadow-lg"
           src={cc_record}
           type="application/pdf"
           width="1200px"
-          height="650px"
+          height="850px"
         />
       </div>
       <h1>refer both</h1>
