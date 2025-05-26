@@ -1,6 +1,7 @@
 import React from 'react'
 import sample2 from './sample2.pdf'
 import cc_record from './cc_record.pdf'
+import mann from './mainn.pdf'
 
 const App = () => {
   return (
@@ -16,6 +17,13 @@ const App = () => {
         <embed 
           className="border-2 border-red-500 rounded-lg shadow-lg"
           src={cc_record}
+          type="application/pdf"
+          width="1200px"
+          height="850px"
+        />
+        <embed 
+          className="border-2 border-red-500 rounded-lg shadow-lg"
+          src={mann}
           type="application/pdf"
           width="1200px"
           height="850px"
