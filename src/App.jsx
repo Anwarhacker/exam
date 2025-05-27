@@ -1,7 +1,8 @@
 import React from 'react'
-import sample2 from './sample2.pdf'
-import cc_record from './cc_record.pdf'
-import mann from './mainn.pdf'
+import devops from './devops.pdf'
+import devops6 from './devops6.pdf'
+import devops8 from './devops8.pdf'
+
 
 const App = () => {
   return (
@@ -9,21 +10,21 @@ const App = () => {
       <div className="container mx-auto p-8 flex flex-col items-center justify-center gap-8">
         <embed 
           className="border-2 border-red-500 rounded-lg shadow-lg bg-white p-2"
-          src={sample2}
+          src={devops}
           type="application/pdf"
           width="1200px"
           height="850px"
         />
         <embed 
           className="border-2 border-red-500 rounded-lg shadow-lg"
-          src={cc_record}
+          src={devops6}
           type="application/pdf"
           width="1200px"
           height="850px"
         />
         <embed 
           className="border-2 border-red-500 rounded-lg shadow-lg"
-          src={mann}
+          src={devops8}
           type="application/pdf"
           width="1200px"
           height="850px"
