@@ -3,7 +3,8 @@ mkdir program2
 cd program2 in c drive go to users -> admin->program2
 
 1) mvn archetype:generate -DgroupId=com.example -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-2)<?xml version="1.0" encoding="UTF-8"?>
+2) paste the below code i pom fie
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -38,7 +39,13 @@ cd program2 in c drive go to users -> admin->program2
         </plugins>
     </build>
 </project>
-3)package com.example;
+ 
+
+paste in src  /main
+
+3)
+
+package com.example;
 
 public class App {
 
@@ -55,7 +62,12 @@ public class App {
         System.out.println("Application executed successfully!");
     }
 }
-4)package com.example;
+
+paste in src / test
+
+4)
+
+package com.example;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -72,11 +84,18 @@ public class AppTest {
         Assert.assertEquals(5, result);
     }
 }
+
 cd myapp
 5)mvn compile
 6)mvn test
 7)mvn package
 8)java -cp target/myapp-1.0-SNAPSHOT.jar com.example.App
+
+
+
+
+
+
 
 3]]Working with Gradle Project (Groovy DSL)
 mkdir p3
@@ -151,11 +170,20 @@ public class AdditionOperationTest {
 11)gradle build
 12)gradle run
 13)gradle test
+
+
+
+
+
+
+
 4]]]
 mkdir p4
 cd pr4
 1)mvn archetype:generate -DgroupId=com.example -DartifactId=maven-example -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
 2) paste in pom.xml file for below code
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -189,7 +217,10 @@ cd pr4
         </plugins>
     </build>
 </project>
+
 3)src/main/java/com/example/ in this directory paste the below code
+
+
 package com.example;
 
 public class App {
@@ -207,6 +238,7 @@ public class App {
     }
 }
 4)cd maven-example
+
 5)mvn clean install
 6)mvn exec:java -Dexec.mainClass="com.example.App"
 7)gradle init
@@ -214,6 +246,8 @@ public class App {
 9)2
 10)no
 11)paste in build gradle for below code
+
+
 plugins {
     id 'java'
 }
@@ -233,8 +267,14 @@ task run(type: JavaExec) {
     main = 'com.example.App'
     classpath = sourceSets.main.runtimeClasspath
 }
+
 12)gradlew build
 13)gradlew run
+
+
+
+
+
 
 
 
@@ -250,15 +290,18 @@ o	JAVA_HOME: C:\Program Files\Java\jdk-17
 o	Name: Maven-3.9.9
 o	MAVEN_HOME: C:\apache-maven-3.9.9
 4.	Under Git, ensure Git is installed or specify the path to your Git executable.
+
 ->git clone https://github.com/spring-projects/spring-petclinic.git
 -> cd spring-petclinic
 ->mvn clean install
+
 1.	In Jenkins, click New Item.
 2.	Enter a name for your job (e.g., SpringPetclinicPipeline).
 3.	Select Pipeline and click OK.
 4.	In the Pipeline section, set:
 o	Definition: Pipeline script 
 o	Paste:
+
 pipeline {
   agent any
     tools {
@@ -308,6 +351,11 @@ pipeline {
     }
 }
 
+
+
+
+
+
 7]]]
 ->Open PowerShell as Administrator and run below commands
 wsl --install
@@ -345,6 +393,10 @@ press ctrl+o-> enter to save and ctrl+x
 ansible-playbook -i hosts install_nginx.yml 
 ansible-playbook -i hosts install_nginx.yml --ask-become-pass  (if error type this)
 ->curl http://localhost 
+
+
+
+
 
 8]]]
 -> in cmd mkdir C:\ci-artifacts
