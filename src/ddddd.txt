@@ -1,0 +1,464 @@
+2]]]in command prompt
+mkdir program2
+cd program2 in c drive go to users -> admin->program2
+
+1) mvn archetype:generate -DgroupId=com.example -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+2)<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>myapp</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <!-- JUnit Dependency for Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Maven Surefire Plugin for running tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                    <useSystemOut>true</useSystemOut>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+3)package com.example;
+
+public class App {
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+
+        int result = app.add(2, 3);
+        System.out.println("2 + 3 = " + result);
+
+        System.out.println("Application executed successfully!");
+    }
+}
+4)package com.example;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class AppTest {
+
+    @Test
+    public void testAdd() {
+        App app = new App();
+        int result = app.add(2, 3);
+
+        System.out.println("Running test: 2 + 3 = " + result);
+
+        Assert.assertEquals(5, result);
+    }
+}
+cd myapp
+5)mvn compile
+6)mvn test
+7)mvn package
+8)java -cp target/myapp-1.0-SNAPSHOT.jar com.example.App
+
+3]]Working with Gradle Project (Groovy DSL)
+mkdir p3
+cd p3
+1)gradle init --type java-application
+2)17
+3)grovvyproject
+4)1
+5)2
+6)1
+7)no
+8)paste in built.gradle
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.example.AdditionOperation'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    outputs.upToDateWhen { false }
+
+    testLogging {
+        events "passed", "failed", "skipped"
+        exceptionFormat "full"
+        showStandardStreams = true
+    }
+}
+9)src/main/java/org/example/
+change name as AdditionOperation.java  and paste the below code
+package com.example;
+
+public class AdditionOperation {
+    public static void main(String[] args) {
+        double num1 = 5;
+        double num2 = 10;
+
+        double sum = num1 + num2;
+
+        System.out.printf("The sum of %.2f and %.2f is %.2f%n", num1, num2, sum);
+    }
+}
+10)src/test/java/org/example/
+change name as AdditionOperationTest.java  and paste the below code
+package com.example;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AdditionOperationTest {
+
+    @Test
+    public void testAddition() {
+        double num1 = 5;
+        double num2 = 10;
+        double expectedSum = num1 + num2;
+
+        double actualSum = num1 + num2;
+
+        assertEquals(expectedSum, actualSum, 0.01);
+    }
+}
+11)gradle build
+12)gradle run
+13)gradle test
+4]]]
+mkdir p4
+cd pr4
+1)mvn archetype:generate -DgroupId=com.example -DartifactId=maven-example -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+2) paste in pom.xml file for below code
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>maven-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+3)src/main/java/com/example/ in this directory paste the below code
+package com.example;
+
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Hello, Maven");
+        System.out.println("This is the simple realworld example....");
+
+        int a = 5;
+        int b = 10;
+        System.out.println("Sum of " + a + " and " + b + " is " + sum(a, b));
+    }
+
+    public static int sum(int x, int y) {
+        return x + y;
+    }
+}
+4)cd maven-example
+5)mvn clean install
+6)mvn exec:java -Dexec.mainClass="com.example.App"
+7)gradle init
+8)yes
+9)2
+10)no
+11)paste in build gradle for below code
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+task run(type: JavaExec) {
+    main = 'com.example.App'
+    classpath = sourceSets.main.runtimeClasspath
+}
+12)gradlew build
+13)gradlew run
+
+
+
+6]]]
+•	JDK 17 and Maven 3.9.9 installed.
+•	Git installed on your system. set environmental verible
+•	Jenkins installed and running on http://localhost:8080
+1.	Go to Manage Jenkins > Global Tool Configuration.
+2.	Under JDK, click Add JDK:
+o	Name: JDK-17
+o	JAVA_HOME: C:\Program Files\Java\jdk-17
+3.	Under Maven, click Add Maven:
+o	Name: Maven-3.9.9
+o	MAVEN_HOME: C:\apache-maven-3.9.9
+4.	Under Git, ensure Git is installed or specify the path to your Git executable.
+->git clone https://github.com/spring-projects/spring-petclinic.git
+-> cd spring-petclinic
+->mvn clean install
+1.	In Jenkins, click New Item.
+2.	Enter a name for your job (e.g., SpringPetclinicPipeline).
+3.	Select Pipeline and click OK.
+4.	In the Pipeline section, set:
+o	Definition: Pipeline script 
+o	Paste:
+pipeline {
+  agent any
+    tools {
+        jdk 'jdk-21'               // Make sure JDK 17 is configured in Jenkins
+        maven 'Maven-3.9.9'       // Ensure Maven is installed in Jenkins global tools
+    }
+    environment {
+        MAVEN_OPTS = "-Dmaven.test.failure.ignore=true"
+    }
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git url: 'https://github.com/spring-projects/spring-petclinic.git', branch: 'main'
+                // If private repo:
+                // git credentialsId: 'github-creds', url: 'https://github.com/your-org/your-repo.git', branch: 'main'
+            }
+        }
+        stage('Build with Maven') {
+            steps {
+                bat 'mvn clean compile'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+        stage('Archive Test Results') {
+            steps {
+                junit 'target/surefire-reports/*.xml'
+            }
+        }
+        stage('Package App') {
+            steps {
+                bat 'mvn package'
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+    post {
+        success {
+            echo "✅ Build and tests succeeded."
+        }
+        failure {
+            echo "❌ Build or tests failed."
+        }
+    }
+}
+
+7]]]
+->Open PowerShell as Administrator and run below commands
+wsl --install
+wsl
+ next ubuntu start as administrator and run below commands
+  ->sudo apt update 
+  ->enter ur ubuntu passoword
+->sudo apt install ansible -y 
+->ansible –version
+->mkdir ~/ansible-lab 
+->cd ~/ansible-lab
+->nano hosts    open one page and paste below code
+[local] 
+localhost ansible_connection=local  press ctrl+o-> enter to save and ctrl+x  to exit
+->ansible -i hosts local -m ping
+->nano install_nginx.yml  open one page paste below the code
+---
+- name: Install and start NGINX on localhost
+  hosts: local
+  become: yes
+
+  tasks:
+    - name: INstall NGINX
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure NGINX is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+press ctrl+o-> enter to save and ctrl+x
+ansible-playbook -i hosts install_nginx.yml 
+ansible-playbook -i hosts install_nginx.yml --ask-become-pass  (if error type this)
+->curl http://localhost 
+
+8]]]
+-> in cmd mkdir C:\ci-artifacts
+->in powershell run this command  wsl --install -d Ubuntu
+Jenkins installed on Windows (http://localhost:8080)
+Step 1: Jenkins Setup
+1.1 Create a Freestyle Job
+
+    Go to Jenkins → New Item → Name: maven-pipeline → Freestyle project → OK.
+
+1.2 Configure Git Repository
+
+    Under Source Code Management:
+
+        Select Git → Repository URL:
+
+        https://github.com/spring-projects/spring-petclinic.git
+
+        Branches to build: */main
+1.3 Maven Build
+
+    Under Build:
+
+        Click Add build step → Invoke top-level Maven targets
+
+        Goals: clean package
+
+Fix for "Cannot run program 'sh'" Error
+1. Replace "Execute shell" with Windows Command
+
+    Go to your Jenkins job configuration
+
+    Remove the failing "Execute shell" step
+
+    Add build step → Execute Windows batch command
+
+    Use this command instead:
+    bat
+
+copy "target\*.jar" "C:\ci-artifacts\"
+2. Keep Post-build Actions Minimal
+
+Under Post-build Actions, only add:
+
+    Archive the artifacts: target/*.jar (optional backup)
+
+
+Step 2: Ansible Setup in WSL
+2.1 Install Ansible
+
+Open WSL (Ubuntu) and run:
+bash
+
+sudo apt update && sudo apt install ansible -y
+
+2.2 Create Ansible Files
+
+    Inventory File:
+    bash
+
+mkdir ~/ansible
+echo "localhost ansible_connection=local" > ~/ansible/inventory
+
+Playbook (deploy.yml):
+bash
+
+cat <<EOF > ~/ansible/deploy.yml
+---
+- hosts: localhost
+  tasks:
+    - name: Copy JAR to deployment folder
+      copy:
+        src: "/mnt/c/ci-artifacts/spring-petclinic-3.4.0-SNAPSHOT.jar"
+        dest: "/home/$USER/deploy/app.jar"
+EOF
+
+Create deployment folder:
+bash
+cd ..
+
+    mkdir -p ~/deploy
+cd ~/ansible 
+
+2.3 Run Ansible
+bash
+
+ansible-playbook -i ~/ansible/inventory ~/ansible/deploy.yml
+ls -l ~/deploy/
+
+Run the App (Optional):
+bash
+
+    java -jar ~/deploy/app.jar            select jdk21 and paste it
+
+
+
+curl http://localhost:8080
+
+Or install a GUI browser in WSL:
+bash
+
+sudo apt install w3m && w3m http://localhost:8080
+java -jar ~/deploy/app.jar
+
+another ubunt run the below command
+sudo apt install w3m && w3m http://localhost:8080
+
+
+
+ 
+
+
+
+
+
+
+
